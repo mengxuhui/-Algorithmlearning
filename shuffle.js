@@ -2,7 +2,7 @@
  * @Author: i.mengxh@gmail.com
  * @Date: 2020-07-20 09:32:50
  * @Last Modified by: i.mengxh@gmail.com
- * @Last Modified time: 2020-07-20 10:14:08
+ * @Last Modified time: 2020-07-20 10:37:02
  */
 
 // 其算法思想就是 从原始数组中随机抽取一个新的元素到新数组中
@@ -48,4 +48,32 @@ function shuffle2(arr) {
 }
 let arr1 = shuffle([...new Array(10).keys()]);
 
-console.log(arr1);
+// console.log(arr1);
+
+
+// 对52张牌进行洗牌算法
+function* getCards() {
+    const nums = ['A', 2, 3, 4, 5, 6, 7, 8, 9, '10', 'J', 'Q', 'K']
+
+    yield* nums.map(num => ({ key: '♥️', num: num }))
+    yield* nums.map(num => ({ key: '♠️', num: num }))
+    yield* nums.map(num => ({ key: '♦️', num: num }))
+    yield* nums.map(num => ({ key: '♣️', num: num }))
+}
+
+const cards = [...getCards()]
+
+function shuffle3(arr) {
+    let length = arr.length;
+    var temp;
+    while (0 != length) {
+        const random = Math.floor(Math.random() * length);
+        length--;
+        temp = arr[length];
+        arr[length] = arr[random];
+        arr[random] = temp;
+    }
+    return arr;
+}
+
+console.log(shuffle3(cards));
