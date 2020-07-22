@@ -2,13 +2,13 @@
  * @Author: i.mengxh@gmail.com
  * @Date: 2020-07-22 09:52:49
  * @Last Modified by: i.mengxh@gmail.com
- * @Last Modified time: 2020-07-22 10:47:56
+ * @Last Modified time: 2020-07-22 11:16:15
  */
 
 function findPostion(arr, target) {
     let len = arr.length;
     let start = 0, end = len - 1;
-    while (end > 0 && start >= 0) {
+    while (start < end) {
         if (arr[start] + arr[end] > target) {
             end--;
         } else if (arr[start] + arr[end] < target) {
@@ -20,4 +20,4 @@ function findPostion(arr, target) {
     }
 }
 
-console.log(findPostion([1, 2, 3, 4, 7, 18, 19, 20, 30], 11));
+console.log(findPostion([1, 2, 3, 4, 7, 8, 9, 11], 11));
