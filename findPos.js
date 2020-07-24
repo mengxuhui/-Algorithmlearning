@@ -1,3 +1,10 @@
+/*
+ * @@Description: 
+ * @Author: i.mengxh@gmail.com
+ * @Date: 2020-07-24 11:49:38
+ * @LastEditTime: 2020-07-24 16:36:13
+ * @LastEditors: i.mengxh@gmail.com
+ */
 /* 找出两个数相加的值为target
  * @Author: i.mengxh@gmail.com
  * @Date: 2020-07-22 09:52:49
@@ -15,7 +22,7 @@ function findPostion(arr, target) {
             start++;
         } else {
             console.log(start, end);
-            return [start, end]
+            return [start, end];
         }
     }
 }
