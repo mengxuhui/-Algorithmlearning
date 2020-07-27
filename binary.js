@@ -2,7 +2,7 @@
  * @@Description:Binary tree
  * @Author: i.mengxh@gmail.com
  * @Date: 2020-07-24 11:50:12
- * @LastEditTime: 2020-07-24 16:36:20
+ * @LastEditTime: 2020-07-27 16:26:45
  * @LastEditors: i.mengxh@gmail.com
  */
 
@@ -62,12 +62,6 @@ sum —— 从根节点到叶子节点的路径上的节点值相加的目标和
 */
 
 const hasPathSum = (root, sum) => {
-    // if (root == null) return false; // 遍历到null节点
-    // if (root.left == null && root.right == null) { // 遍历到叶子节点
-    //     return sum - root.val == 0; // 如果满足这个就返回true
-    // }
-    // return hasPathSum(root.left, sum - root.val) ||
-    //     hasPathSum(root.right, sum - root.val); // 大问题化成两个子树的问题
 
     if (root == null) {
         return false;
