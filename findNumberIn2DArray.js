@@ -2,7 +2,7 @@
  * @@Description:二维数据查找
  * @Author: i.mengxh@gmail.com
  * @Date: 2020-07-28 09:37:04
- * @LastEditTime: 2020-07-28 09:45:03
+ * @LastEditTime: 2020-07-28 09:44:35
  * @LastEditors: i.mengxh@gmail.com
  */
 /**
@@ -49,4 +49,4 @@ const matrix = [
     [10, 13, 14, 17, 24],
     [18, 21, 23, 26, 30]
 ];
-console.log(findNumberIn2DArray(matrix, 20));
+console.log(findNumberIn2DArray(matrix, 5)); // true
