@@ -1,10 +1,10 @@
-/* 找出数组中的最大和最小元素
+/*
+ * @@Description: 
  * @Author: i.mengxh@gmail.com
- * @Date: 2020-07-21 09:58:21
- * @Last Modified by: i.mengxh@gmail.com
- * @Last Modified time: 2020-07-21 11:03:16
+ * @Date: 2020-07-24 11:49:38
+ * @LastEditTime: 2020-08-04 10:24:28
+ * @LastEditors: i.mengxh@gmail.com
  */
-
 function getMax(arr) {
     let len = arr.length, max = -Infinity;
     while (len--) {
@@ -35,13 +35,12 @@ function getTemp(arr) {
 function bsearch(arr, target) {
     let start = 0, end = arr.length - 1;
     while (start <= end) {
-        let mid = start + (end - start) / 2;
+        let mid = Math.floor(start + (end - start) / 2);
         if (arr[mid] == target) {
             return mid;
         } else if (arr[mid] < target) {
             start = mid + 1;
         } else {
-
             end = mid - 1;
         }
     }
