@@ -14,12 +14,12 @@
 // 时间复杂度是o(n2)
 
 function shuffle(arr) {
-    var result = [],
+    let result = [],
         random;
     while (arr.length > 0) {
         random = Math.floor(Math.random() * arr.length);
-        result.push(arr[random])
-        arr.splice(random, 1)
+        result.push(arr[random]);
+        arr.splice(random, 1);
     }
     return result;
 }
@@ -34,7 +34,7 @@ let arr = shuffle([...new Array(10).keys()]);
 
 
 function shuffle2(arr) {
-    let length = arr.length
+    let length = arr.length;
     let temp;
     while (0 != length) {
         let random = Math.floor(Math.random() * length);
@@ -53,15 +53,15 @@ let arr1 = shuffle([...new Array(10).keys()]);
 
 // 对52张牌进行洗牌算法
 function* getCards() {
-    const nums = ['A', 2, 3, 4, 5, 6, 7, 8, 9, '10', 'J', 'Q', 'K']
+    const nums = ['A', 2, 3, 4, 5, 6, 7, 8, 9, '10', 'J', 'Q', 'K'];
 
-    yield* nums.map(num => ({ key: '♥️', num: num }))
-    yield* nums.map(num => ({ key: '♠️', num: num }))
-    yield* nums.map(num => ({ key: '♦️', num: num }))
-    yield* nums.map(num => ({ key: '♣️', num: num }))
+    yield* nums.map(num => ({ key: '♥️', num: num }));
+    yield* nums.map(num => ({ key: '♠️', num: num }));
+    yield* nums.map(num => ({ key: '♦️', num: num }));
+    yield* nums.map(num => ({ key: '♣️', num: num }));
 }
 
-const cards = [...getCards()]
+const cards = [...getCards()];
 
 function shuffle3(arr) {
     let length = arr.length;

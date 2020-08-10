@@ -2,7 +2,7 @@
  * @@Description: 冒泡排序
  * @Author: i.mengxh@gmail.com
  * @Date: 2020-08-05 09:28:33
- * @LastEditTime: 2020-08-05 09:59:16
+ * @LastEditTime: 2020-08-10 10:50:38
  * @LastEditors: i.mengxh@gmail.com
  */
 
@@ -44,3 +44,5 @@ console.log(bubbleSort(arr)); // [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 // 当i = 1的时候，里面的循环再次完整执行，就会判断arr的第1项和arr的第2项的大小，
 // 并把较大的元素排序到后面，此时由于i的上一轮循环已经把最大的元素排序到最后了，也就说我们没有必要再去比较数组的最后两项
 // ，所以当i每多循环一次，j就可以少循环一次，这也是为什么j的循环条件设置为j < arr.length - 1 - i的原因，这样写可以减少浏览器解析次数，从而提高代码执行效率。
+
+// 参考：https://segmentfault.com/a/1190000014175918
