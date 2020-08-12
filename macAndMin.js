@@ -5,7 +5,7 @@
  * @LastEditTime: 2020-08-10 09:31:56
  * @LastEditors: i.mengxh@gmail.com
  */
-
+// 结论在node端setTimeout全部执行完成才会执行promise，在浏览器端一次setTimeout一次微任务
 for (let i = 0; i < 10; i++) {
     setTimeout(function () {
         console.log('0000');

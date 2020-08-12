@@ -2,7 +2,7 @@
  * @@Description: js集成方式
  * @Author: i.mengxh@gmail.com
  * @Date: 2020-08-10 09:40:42
- * @LastEditTime: 2020-08-10 10:11:00
+ * @LastEditTime: 2020-08-12 09:39:11
  * @LastEditors: i.mengxh@gmail.com
  */
 
@@ -81,3 +81,105 @@ child4.name.push('zhis');
 
 console.log(child4.getName()); // [ 'Jhon', 'Nick', 'zhis' ]
 console.log(child4.getAge()); // 19
+
+// 组合继承
+/**
+ * 组合继承就是将原型链和借用构造函数的技术结合到一起，
+ * 发挥二者长处的一种继承模式，背后思想是使用原型链实现对原型属性和方法的继承，
+ * 通过借用构造函数实现对实例属性的继承。这样，既能够保证能够通过原型定义的方法实现函数复用，又能够保证每个实例有自己的属性
+ */
+
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+    this.address = 'GanSu';
+}
+
+Person.prototype.sayHello = function () {
+    console.log('hello ' + this.name);
+};
+
+function Child3(name, age) {
+    Person.call(this, name, age);
+}
+
+Child3.prototype = new Person();
+
+Child3.prototype.constructor = Child3;// 校正构造函数
+
+const child5 = new Child3('aline', 24);
+
+console.log(child5.sayHello()); // hello aline
+
+// 组合继承既具有原型链继承能够复用函数的特性，
+// 又有借用构造函数方式能够保证每个子类实例能够拥有自己的属性以及向超类传参的特性，
+// 但组合继承也并不是完美实现继承的方式，因为这种方式在创建子类时会调用两次超类的构造函数。
+
+// 四、原型式继承：对对象表达式进行继承，思想是借助原型可以基于已有的对象创建新对象
+// 在object()函数内部，先创建了一个临时性的构造函数，然后将传入的对象作为这个构造函数的原型，
+// 最后返回这个临时类型的一个新实例。本质上object()就是完成了一次浅复制操作
+function object(obj) {
+    function Fun() { };
+    Fun.prototype = obj;
+    return new Fun();
+}
+
+let person = {
+    name: 'Hgtk',
+    age: 24,
+    friends: ['A', 'B', 'C', 'D']
+};
+
+let person1 = object(person);
+person1.name = 'Huzi';
+console.log(person1.name, 'person1.name'); // Huzi person1.name
+
+let person2 = object(person);
+person2.name = 'Huze';
+person2.friends.push('G');
+
+console.log(person2.friends, 'person2.friends'); // [ 'A', 'B', 'C', 'D', 'G' ] 'person2.friends'
+console.log(person1.friends, 'person1.friends'); // [ 'A', 'B', 'C', 'D', 'G' ] 'person2.friends'
+/**
+ *ECMAScript5通过新增Object.create()方法规范化了原型式继承，这个方法接收两个参数：一个用作新对象原型的对象和为新对象定义属性的对象
+ */
+
+var persond = {
+    name: 'alice',
+    friends: ['leyla', 'court', 'van']
+};
+
+var p1 = Object.create(persond);
+p1.name = 'p1';
+p1.friends.push('p1');
+
+var p2 = Object.create(persond);
+p2.name = 'p2';
+p2.friends.push('p2');
+
+console.log(p1.name);
+console.log(persond.friends);
+
+// 寄生式集成：与原型式继承紧密相关的一种思路，即创建一个仅用于封装继承函数过程的函数，该函数在内部以某种方式来增强对象，最后返回对象。
+function object2(obj) {
+    function F() { };
+    F.prototype = obj;
+    return new F();
+}
+// 个仅用于封装继承函数过程的函数
+function func1(original) {
+    // let clone = Object.create(original); // 创建新对象
+    let clone = object2(original); // 创建新对象
+    clone.sayHell = function () { // 增强对象，添加属性或方法
+        console.log(this.name);
+    };
+
+    return clone;  // 返回新对象
+}
+
+var demoPerson = {
+    name: 'Hgibe',
+    age: 24
+};
+
+console.log('func1(demoPerson)', func1(demoPerson).sayHell()); // Hgibe

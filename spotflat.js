@@ -2,7 +2,7 @@
  * @@Description:数组压平
  * @Author: i.mengxh@gmail.com
  * @Date: 2020-07-31 09:53:56
- * @LastEditTime: 2020-07-31 10:10:55
+ * @LastEditTime: 2020-08-12 11:09:36
  * @LastEditors: i.mengxh@gmail.com
  */
 /** 
@@ -38,7 +38,12 @@ function flatten2d(arr) {
     return result;
 }
 
+// // 利用redues
+// function flatten2dD(arr) {
+//     return arr.reduce((pre, cur) => Array.isArray(cur) ? flatten2dD(cur) : pre.concat(cur), []);
+// }
 
 
 
-console.log(flatten([1, 2, 3, 3, [4, 5, 6, 8, [4, 5, 6]]])); //  [ 1, 2, 3, 3, 4, 5, 6, 8, [ 4, 5, 6 ] ]
+// console.log(flatten([1, 2, 3, 3, [4, 5, 6, 8, [4, 5, 6]]])); //  [ 1, 2, 3, 3, 4, 5, 6, 8, [ 4, 5, 6 ] ]
+console.log(flatten2dD([1, 2, 3, 3, [4, 5, 6, 8, [4, 5, 6]]])); //  [ 1, 2, 3, 3, 4, 5, 6, 8, [ 4, 5, 6 ] ]
