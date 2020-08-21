@@ -2,7 +2,7 @@
  * @@Description: js集成方式
  * @Author: i.mengxh@gmail.com
  * @Date: 2020-08-10 09:40:42
- * @LastEditTime: 2020-08-12 09:39:11
+ * @LastEditTime: 2020-08-21 10:38:47
  * @LastEditors: i.mengxh@gmail.com
  */
 
@@ -183,3 +183,38 @@ var demoPerson = {
 };
 
 console.log('func1(demoPerson)', func1(demoPerson).sayHell()); // Hgibe
+/**
+ * 新对象不仅具有 person 对象的属性和方法，还有自己的 sayHell() 方法
+ * 缺陷：使用寄生式继承来为对象添加函数，会由于不能做到函数复用造成效率降低，这一点与构造函数模式类似
+ */
+
+
+// ES6继承方式
+
+class ParentEs6 {
+    constructor(height, width) {
+        this.height = height;
+        this.width = width;
+    }
+    get area() {
+        return this.sayHell();
+    }
+
+    sayHell() {
+        return this.height * this.width;
+    }
+}
+
+class ChildEs6 extends ParentEs6 {
+    constructor(height, width) {
+        super(height, width); // 通过super向基类传值
+        this.name = 'Jhone';
+    }
+}
+const parentes = new ParentEs6(10, 20);
+const childes = new ChildEs6(10, 30);
+console.log(parentes.area); // 200
+console.log(childes.area); // 300
+
+
+https://juejin.im/post/6844903696111763470

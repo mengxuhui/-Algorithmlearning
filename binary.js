@@ -2,7 +2,7 @@
  * @@Description:Binary tree
  * @Author: i.mengxh@gmail.com
  * @Date: 2020-07-24 11:50:12
- * @LastEditTime: 2020-07-27 16:26:45
+ * @LastEditTime: 2020-08-14 10:26:30
  * @LastEditors: i.mengxh@gmail.com
  */
 
@@ -15,7 +15,7 @@ function BinaryTree() {
 
     let root = null;
     function insertNode(node, newNode) {
-        if (newNode.key < node.key) { //没有左孩子，则新增左孩子
+        if (newNode.key < node.key) { // 没有左孩子，则新增左孩子
             if (node.left === null) {
                 node.left = newNode;
             } else {
@@ -75,4 +75,36 @@ const hasPathSum = (root, sum) => {
 };
 
 
+function BinnaryTree() {
+    const Node = function (key) {
+        this.key = key;
+        this.left = null;
+        this.right = null;
+    };
+    let root = null;
+    const insertNode = function (node, newNode) {
+        if (newNode.key < node.key) { // 没有左孩子，则新增左孩子
+            if (node.left === null) {
+                node.left = newNode;
+            } else {
+                insertNode(node.left, newNode);
+            }
+        } else {
+            if (node.right === null) {
+                node.right = newNode;
+            } else {
+                //如果有左孩子则递归算法实现插入右孩子节点
+                insertNode(node.right, newNode);
+            }
+        }
+    };
 
+    this.insert = function (key) {
+        let node = new Node(key);
+        if (root == null) {
+            root = node;
+        } else {
+            insertNode(root, node);
+        }
+    };
+}

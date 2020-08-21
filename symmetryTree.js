@@ -2,7 +2,7 @@
  * @@Description: 判断树是否是对称二叉树
  * @Author: i.mengxh@gmail.com
  * @Date: 2020-07-27 11:41:41
- * @LastEditTime: 2020-07-27 11:50:10
+ * @LastEditTime: 2020-08-14 09:37:49
  * @LastEditors: i.mengxh@gmail.com
  */
 /*
@@ -28,3 +28,16 @@ let isSymmetric = function (root) {
     return !root || check(root.left, root.right); // root为null也是对称的
     // 不满足则调用check判断左右子树
 };
+
+let isSymmetric = function (root) {
+    const check = (left, rigth) => {
+        if (!left && !right) return true; // 没有子节点也是对称树
+        if (left && rigth) {
+            return left === rigth && check(left.left, right.right) && check(left.right, right.left)
+        }
+
+        return false;
+    }
+
+    return !root || check(root.left, root.right)
+}
