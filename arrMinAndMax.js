@@ -27,7 +27,7 @@ function getMin(arr) {
 
 function getTemp(arr) {
     return arr.reduce((cur, value) => {
-        return cur > value ? cur : value
+        return cur > value ? cur : value;
     });
 }
 

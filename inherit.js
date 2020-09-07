@@ -1,8 +1,8 @@
 /*
- * @@Description: js集成方式
+ * @@Description: js继承方式
  * @Author: i.mengxh@gmail.com
  * @Date: 2020-08-10 09:40:42
- * @LastEditTime: 2020-08-21 10:38:47
+ * @LastEditTime: 2020-09-01 17:06:23
  * @LastEditors: i.mengxh@gmail.com
  */
 
@@ -13,8 +13,8 @@ function Parent() {
     this.name = 'Jhon';
     this.address = 'ChengDu';
     this.children = ['A', 'B'];
-
 }
+
 Parent.prototype.children = function () {
     console.log(this.children);
 };

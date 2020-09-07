@@ -2,10 +2,10 @@
  * @@Description: 实现promise的链式调用
  * @Author: i.mengxh@gmail.com
  * @Date: 2020-08-17 19:44:12
- * @LastEditTime: 2020-08-17 19:54:04
+ * @LastEditTime: 2020-09-01 15:46:46
  * @LastEditors: i.mengxh@gmail.com
  */
-function Promise(excutor) {
+function PromiseMy(excutor) {
     let self = this;
     self.onResolvedCallback = []; // Promise resolve时的回调函数集
     // 传递给Promise处理函数的resolve
@@ -22,7 +22,7 @@ function Promise(excutor) {
     excutor(resolve.bind(self));
 }
 
-Promise.prototype.then = function (onResolved) {
+PromiseMy.prototype.then = function (onResolved) {
     // 保存上下文，哪个promise调用的then，就指向哪个promise。
     let self = this;
     // 一定要返回一个新的promise
@@ -40,5 +40,12 @@ Promise.prototype.then = function (onResolved) {
     });
 };
 
-
+new PromiseMy((resolve, reject) => {
+    reject(1);
+    resolve(1);
+}).then(data => {
+    console.log(data);
+}).then(data => {
+    console.log(data);
+});
 
